@@ -2,25 +2,25 @@ package api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
 
-public class ReqresTestGetNew {
+public class ReqresTest {
     private final static String URL = "https://reqres.in/";
-    // get запрос, со спецификацией
+    // get запрос, без спецификации
     @JsonCreator
     @JsonProperty
     @Test
     public void checkAvatarAndIdTest(){
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpec200OK());
         List<UserData> users = given()
                 .when()
-                .get("api/users?page=2")
+                .contentType(ContentType.JSON)
+                .get(URL+"api/users?page=2")
                 .then().log().all()
                 .extract().body().jsonPath().getList("data", UserData.class);
 
