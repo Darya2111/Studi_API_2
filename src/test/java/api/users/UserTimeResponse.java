@@ -1,6 +1,8 @@
-package api;
+package api.users;
 
-public class UserTimeResponse extends UserTime{
+import api.users.UserTime;
+
+public class UserTimeResponse extends UserTime {
     private String updatedAt;
 
     public UserTimeResponse(String name, String job, String updatedAt) {

@@ -1,7 +1,8 @@
-package api;
+package api.users;
 
 
 // с сайта https://json2csharp.com/code-converters/json-to-pojo   перевели Json в Pojo
+// Эта штука нужна, чтобы красиво выводило полученную информацию
 public class UserData {
     private Integer id;
     private String email;

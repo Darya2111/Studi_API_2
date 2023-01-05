@@ -1,5 +1,13 @@
 package api;
 
+import api.colors.ColorsData;
+import api.registration.Register;
+import api.registration.SuccessReg;
+import api.registration.UnSuccessReg;
+import api.spec.Specifications;
+import api.users.UserData;
+import api.users.UserTime;
+import api.users.UserTimeResponse;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.junit.jupiter.api.Assertions;
@@ -13,7 +21,7 @@ import static io.restassured.RestAssured.given;
 
 public class ReqresTestNew {
     private final static String URL = "https://reqres.in/";
-    // get запрос, со спецификацией. Получаем список пользователей
+    // get запрос, со спецификацией. Получаем список пользователей и проверяем, что в аватарах есть id
     @JsonCreator
     @JsonProperty
     @Test
@@ -61,7 +69,7 @@ public class ReqresTestNew {
         Assertions.assertEquals(token, successReg.getToken());
 
     }
-    // post. неуспешная регистрация
+    // post. неуспешная регистрация. Не работает(
     @Test
     public void unSuccessRegTest(){
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecError400());
